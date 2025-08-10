@@ -4,36 +4,55 @@ import '../models/task_model.dart';
 class TaskController {
   final List<Task> _tasks = [
     Task(
-      id: '1',
-      title: 'Complete Flutter Assignment 1',
-      description: 'Build Interactive UI',
-      assignedTo: 'Rakesh',
-      deadline: DateTime.now().add(const Duration(hours: 2)),
-      status: TaskStatus.notStarted,
+        id: '1',
+        title: 'Auth Page',
+        description: 'email authentication',
+        assignedTo: 'Rakesh',
+        deadline: DateTime.now().add(const Duration(hours: 2)),
+        status: TaskStatus.notStarted,
+        priority: 'High Priority'
     ),
     Task(
       id: '2',
-      title: 'Complete Flutter Assignment 2',
-      description: 'Complete Firebase Integration',
+      title: 'Enhance UI',
+      description: 'Hero Animation',
       assignedTo: 'Anuj',
       deadline: DateTime.now().subtract(const Duration(hours: 1)),
       status: TaskStatus.started,
     ),
     Task(
       id: '3',
-      title: 'Complete Flutter Assignment 3',
-      description: 'Integrate Google Admob',
+      title: 'Revenue',
+      description: 'Google Admob',
       assignedTo: 'Ajay',
       deadline: DateTime.now().add(const Duration(days: 3)),
       status: TaskStatus.completed,
     ),
     Task(
       id: '4',
-      title: 'Complete Flutter Assignment 4',
-      description: 'Integrate Razorpay Payment Gateway',
+      title: 'Subscription',
+      description: 'Razorpay Payment Gateway',
       assignedTo: 'Ayush',
       deadline: DateTime.now().add(const Duration(days: 5)),
       status: TaskStatus.notStarted,
+    ),
+    Task(
+        id: '5',
+        title: 'Update',
+        description: 'Push Updates to github',
+        assignedTo: 'Rohit',
+        deadline: DateTime.now().add(const Duration(hours: 4)),
+        status: TaskStatus.notStarted,
+        priority: 'High Priority'
+    ),
+    Task(
+        id: '6',
+        title: 'Deploy',
+        description: 'Google Play Store',
+        assignedTo: 'Rohit',
+        deadline: DateTime.now().add(const Duration(hours: 4)),
+        status: TaskStatus.notStarted,
+        priority: 'High Priority'
     ),
   ];
 

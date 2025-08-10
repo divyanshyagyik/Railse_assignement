@@ -10,6 +10,7 @@ class Task {
   final String assignedTo;
   final DateTime deadline;
   final TaskStatus status;
+  final String? priority;
 
   Task({
     required this.id,
@@ -18,7 +19,9 @@ class Task {
     required this.assignedTo,
     required this.deadline,
     required this.status,
+    this.priority,
   });
+
 
   Task copyWith({
     String? id,
@@ -27,6 +30,7 @@ class Task {
     String? assignedTo,
     DateTime? deadline,
     TaskStatus? status,
+    String? priority,
   }) {
     return Task(
       id: id ?? this.id,
@@ -35,6 +39,7 @@ class Task {
       assignedTo: assignedTo ?? this.assignedTo,
       deadline: deadline ?? this.deadline,
       status: status ?? this.status,
+      priority: priority ?? this.priority,
     );
   }
 
@@ -58,11 +63,16 @@ class Task {
       case TaskStatus.notStarted:
         return Colors.grey;
       case TaskStatus.started:
-        return Colors.orange;
+        return Colors.blue;
       case TaskStatus.completed:
         return Colors.green;
     }
   }
+
+  Color get overdueColor => Colors.red;
+  Color get dueColor => Colors.orange;
+  Color get completedColor => Colors.green;
+
 
   String get timeStatus {
     if (status == TaskStatus.completed) {
@@ -74,8 +84,11 @@ class Task {
 
     if (difference.isNegative) {
       return 'Overdue by ${DateFormat('hh:mm a').format(deadline)}';
-    } else {
+    } else if (difference.inHours < 24){
       return 'Due in ${difference.inHours}h ${difference.inMinutes.remainder(60)}m';
+    }
+    else {
+      return 'Due in ${difference.inDays}d';
     }
   }
 
@@ -89,10 +102,10 @@ class Task {
 
     if (difference.isNegative) {
       return Colors.red;
-    } else if (difference.inHours < 24) {
+    } else if(difference.inHours < 24) {
       return Colors.orange;
     } else {
-      return Colors.blue;
+      return Colors.orange;
     }
   }
 }
